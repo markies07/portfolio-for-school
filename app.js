@@ -39,6 +39,7 @@ function sendEmail(){
   }).then(
     message => alert("Message Sent Succesfully!")
   );
+  document.getElementById("form").reset();
 }
 
 
