@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="h-[100vh] w-full flex justify-center items-center flex-col">
+        <div>
+            <input type="text" id="password" class="border-2 border-black py-[2px]">
+            <button ondblclick="validate()" class="bg-black text-white py-1 px-3" id="haha" onclick="haha()">Validate</button>
+            <div id="msg" class="text-center"></div>
+        </div>
+    </div>
+    
+
+    <script>
+        function validate(){
+            var password = document.getElementById("password").value;
+            var passwordStrength = /^(?=.*\d) (?=.*[a-z]) (?=.*[A-Z]) .{8,}$/;
+            var lowercase = /[a-z]/g;
+            var uppercase = /[A-Z]/g;
+            var number = /\d/g;
+            var grade = 0;
+
+            if(lowercase.test(password)){
+                grade += 2;
+            }
+            if(uppercase.test(password)){
+                grade += 2;
+            }
+            if(number.test(password)){
+                grade += 2;
+            }
+            if(password.length > 8){
+                grade += 2;
+            }
+
+            if(grade == 2){
+                document.getElementById("msg").innerHTML = "Weak: " + grade;
+            }
+            else if(grade == 4){
+                document.getElementById("msg").innerHTML = "Medium: " + grade;
+            }
+            else if(grade >= 6){
+                document.getElementById("msg").innerHTML = "Strong: " + grade;
+            }
+
+        }
+    </script>
+</body>
+</html>
